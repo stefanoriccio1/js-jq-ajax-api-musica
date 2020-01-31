@@ -13,11 +13,18 @@ $.ajax(
   }
 );
 
-function printData(data){
+function printData(listaDischi){
 // console.log(data);
-for (var i = 0; i < data.length; i++) {
-  var disco = data[i];
+for (var i = 0; i < listaDischi.length; i++) {
+  var disco = listaDischi[i];
   console.log(disco);
+
+  var source = $('#entry-template').html();
+  var template = Handlebars.compile(source);
+  var context = {disco};
+  var html = template(disco);
+
+  $('.cds-container').append(html);
 }
 }
 });
